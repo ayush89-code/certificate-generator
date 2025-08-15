@@ -19,7 +19,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the jar from build stage
-COPY --from=build /app/target/certgen-png-0.0.1.jar ./certgen-png-0.0.1.jar
+COPY --from=build /app/target/certgen-png-0.0.1-SNAPSHOT.jar ./certgen-png-0.0.1-SNAPSHOT.jar
 
 # Expose port (Render provides PORT env)
 EXPOSE 8080
