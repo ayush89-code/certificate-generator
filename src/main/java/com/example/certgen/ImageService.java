@@ -22,7 +22,11 @@ public class ImageService {
 
     public byte[] createCertificate(String name, String skill) {
         try {
-            BufferedImage template = ImageIO.read(new ClassPathResource("sciencekedeewane_certificate.png").getInputStream());
+            //BufferedImage template = ImageIO.read(new ClassPathResource("sciencekedeewane_certificate.png").getInputStream());
+            BufferedImage template = ImageIO.read(
+                    new ClassPathResource("templates/sciencekedeewane_certificate.png").getInputStream()
+            );
+
             Graphics2D g = template.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             // Name - red color, larger font
