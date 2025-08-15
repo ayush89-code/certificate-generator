@@ -1,20 +1,28 @@
 # Use official OpenJDK 17 image
 FROM openjdk:17-jdk-slim
 
-# Set working directory inside the container
+# Stage 1: Build the app using Maven
+FROM maven:3.9.3-eclipse-temurin-17 AS build
+
 WORKDIR /app
 
-# Copy Maven wrapper and project files
-COPY mvnw .
-COPY .mvn .mvn
+# Copy Maven project files
 COPY pom.xml .
 COPY src ./src
 
-# Build the Spring Boot app
-RUN chmod +x mvnw && ./mvnw clean package spring-boot:repackage -DskipTests
+# Build Spring Boot app
+RUN mvn clean package spring-boot:repackage -DskipTests
 
-# Expose port (Render will provide PORT env)
+# Stage 2: Create final lightweight image
+FROM openjdk:17-jdk-slim
+
+WORKDIR /app
+
+# Copy the jar from build stage
+COPY --from=build /app/target/certgen-png-0.0.1.jar ./certgen-png-0.0.1.jar
+
+# Expose port (Render provides PORT env)
 EXPOSE 8080
 
 # Run the Spring Boot app
-CMD ["sh", "-c", "java -jar target/certgen-png-0.0.1.jar"]
+CMD ["sh", "-c", "java -jar certgen-png-0.0.1.jar"]
