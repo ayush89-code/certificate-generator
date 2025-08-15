@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Independence Day Certificate Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+<body>
+<header>
+    <img src="/images/flag.png" alt="Indian Flag" class="flag">
+    <h1>Independence Day 2025 Certificate Distribution</h1>
+</header>
+
+<div class="container">
+    <p>Select a name from your Excel sheet to generate a certificate.</p>
+
+    <form method="post" action="/generate" class="form-center">
+        <label for="name">Name</label>
+        <select id="name" name="name" required>
+            <option value="" disabled selected>-- choose a name --</option>
+            <option th:each="n : ${names}" th:text="${n}" th:value="${n}"></option>
+        </select>
+        <button type="submit" class="flag-btn">Generate Certificate</button>
+    </form>
+</div>
+
+<footer>
+    <div class="contacts">
+        <div><strong>Billu Bhai</strong><br>+91 9876543210</div>
+        <div><strong>Sagar</strong><br>+91 9123456780</div>
+        <div><strong>Sheru Don</strong><br>+91 9988776655</div>
+        <div><strong>Aman Bhai</strong><br>+91 8899776655</div>
+    </div>
+</footer>
+</body>
+</html>
