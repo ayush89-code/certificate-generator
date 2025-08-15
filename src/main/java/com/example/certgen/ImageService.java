@@ -23,8 +23,8 @@ public class ImageService {
     public byte[] createCertificate(String name, String skill) {
         try {
             //BufferedImage template = ImageIO.read(new ClassPathResource("sciencekedeewane_certificate.png").getInputStream());
-            BufferedImage template = ImageIO.read(
-               new ClassPathResource("sciencekedeewane_certificate.png")
+            BufferedImage template = ImageIO.read(new ClassPathResource("sciencekedeewane_certificate.png").getInputStream());
+
 
 
             Graphics2D g = template.createGraphics();
