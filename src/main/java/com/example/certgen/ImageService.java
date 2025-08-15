@@ -24,8 +24,8 @@ public class ImageService {
         try {
             //BufferedImage template = ImageIO.read(new ClassPathResource("sciencekedeewane_certificate.png").getInputStream());
             BufferedImage template = ImageIO.read(
-                    new ClassPathResource("templates/sciencekedeewane_certificate.png").getInputStream()
-            );
+               new ClassPathResource("sciencekedeewane_certificate.png")
+
 
             Graphics2D g = template.createGraphics();
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
